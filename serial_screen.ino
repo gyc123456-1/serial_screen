@@ -16,10 +16,12 @@ uint8_t rgb[3] = {0, 0, 0}; // 临时存放 RGB 值
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_DC, TFT_RES, TFT_SDA, TFT_SCL); // 定义屏幕
 
 void setup() {
-  Serial.begin(1000000); // 设置波特率
+  Serial.begin(2000000); // 设置波特率（Arduino IDE 的串口监视器最大值）
   tft.init(240, 240);  // 初始化显示屏
   tft.fillScreen(ST77XX_BLACK); // 填充屏幕为黑色
   tft.setRotation(0);  // 旋转显示屏方向
+  pinMode(13, OUTPUT); // 设置主板指示灯引脚模式
+  digitalWrite(13, LOW); // 指示灯灭
 }
 
 void loop() {
